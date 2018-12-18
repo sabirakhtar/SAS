@@ -1,0 +1,32 @@
+data golf.balls;
+   length mfg $ 8 type $ 8;
+   format price dollar8.2;
+   mfg='Crew'; type='Distance'; price=8.10;   output;
+               type='Spin';     price=8.25;   output;		  
+               type='Titanium'; price=9.50;   output;
+   mfg='Hi-fly'; type='X12000'; price=13.75;  output;
+                 type='X22000'; price=14.60;  output;
+   mfg='White'; type='Strata';  price=10.60;  output;
+                type='Aero';    price=12.30;  output;
+                type='XL';      price=14.50;  output;
+                type='Flite';   price=16.20;  output;
+run;
+
+data newprice;
+   set golf.balls;
+   saleprice = price * 0.75;
+   saletype = '25% off';
+   format price saleprice dollar8.2;
+run;
+proc print;
+run;
+
+data newprice;
+   set golf.balls;
+   drop type price;
+   saleprice = price * 0.75;
+   saletype = '25% off';
+   format price saleprice dollar8.2;
+run;
+proc print;
+run;
