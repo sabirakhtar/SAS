@@ -1,0 +1,6 @@
+proc import datafile = '/folders/myfolders/SASCrunch/cars_tab.txt'
+ out = cars_tab
+ dbms = dlm
+ replace;
+ delimiter = '09'x;
+run;
